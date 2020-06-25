@@ -73,7 +73,11 @@ class SmtpOptions extends AbstractOptions
                 (is_object($name) ? get_class($name) : gettype($name))
             ));
         }
-        $this->name = $name;
+        if ($name !== null) {
+            $this->name = $name;
+        } else {
+            $this->name = gethostname();   
+        }
         return $this;
     }
 
